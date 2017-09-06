@@ -23,5 +23,7 @@ https://snowboy.kitt.ai/hotword/10650
 # Copyright and license
 
 Copyright (c) 2016-2017, Kalliope team
-                   2017, Franco Masotti
+
+Copyright (c) 2017, Franco Masotti
+                   
 MIT license
