@@ -1,0 +1,200 @@
+---
+
+# 
+# Copyright (c) 2016-2017, Kalliope team
+#                    2017, Franco Masotti
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy 
+# of this software and associated documentation files (the "Software"), to deal 
+# in the Software without restriction, including without limitation the rights 
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+# copies of the Software, and to permit persons to whom the Software is 
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all 
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+# SOFTWARE.
+
+# ---------------------------
+# Kalliope default settings
+# Use YAML syntax
+# ---------------------------
+
+# ---------------------------
+# Trigger
+# ---------------------------
+# This is the trigger that will catch your magic work to wake up Kalliope
+default_trigger: "snowboy"
+
+# Trigger engine configuration
+# Available engine are:
+# - snowboy
+triggers:
+  - snowboy:
+      pmdl_file: "trigger/kalliope-IT-sample.pmdl"
+
+
+# ---------------------------
+# Speech to text
+# ---------------------------
+
+# This is the STT that will be used by default
+default_speech_to_text: "google"
+
+# Spreech to Text engines configuration
+# Available engine are:
+# - google (via SpeechRecognition)
+# -
+speech_to_text:
+  - google:
+      language: "it-IT"
+
+# ---------------------------
+# Text to speech
+# ---------------------------
+# This is the default TTS that will be used by Kalliope to talk.
+default_text_to_speech: "pico2wave"
+#default_text_to_speech: "espeak"
+
+# where we store generated audio files from TTS engine to reuse them
+cache_path: "/tmp/kalliope_tts_cache"
+
+# Text to Spreech engines configuration
+# Available engine are:
+# - pico2wave
+# - acapela
+# - pico2wave
+# - googletts
+# - voicerss
+# - espeak (separate installation required)
+text_to_speech:
+  - pico2wave:
+      language: "it-IT"
+      cache: True
+  - acapela:
+      language: "sonid15"
+      voice: "Manon"
+      cache: True
+  - googletts:
+      language: "it"
+      cache: True
+  - voicerss:
+      language: "it-it"
+      cache: True
+#  - espeak:
+#      voice: "europe/it"
+#      cache: True
+
+# ---------------------------
+# players
+# ---------------------------
+# This is the sound player that will be used by default
+default_player: "mplayer"
+
+# players configuration
+# Available engine are:
+# - mplayer
+# - pyalsaaudio       # no mp3
+# - pyaudioplayer     # no mp3
+# - sounddeviceplayer # no mp3
+players:
+  - mplayer: {}
+  - pyalsaaudio:
+     device: "default"
+     convert_to_wav: True
+  - pyaudioplayer:
+     convert_to_wav: True
+  - sounddeviceplayer:
+     convert_to_wav: True
+
+# ---------------------------
+# Wake up answers
+# ---------------------------
+# When Kalliope detect the hotword/trigger, he will select randomly a phrase in the following list
+# to notify the user that he's listening for orders
+random_wake_up_answers:
+  - "sì"
+  - "Sto ascoltando"
+  - "Ti sto ascoltando"
+  - "Cosa posso fare per lei"
+  - "Dica"
+  - "Come posso aiutarla"
+
+
+# You can play a sound when Kalliope detect the hotword/trigger instead of saying something from
+# the `random_wake_up_answers`. To active the 'random_wake_up_sounds' you must comment out the 'random_wake_up_answers'
+# The file must be .wav or .mp3 format.
+#random_wake_up_sounds:
+  # - "trigger/dong.wav"
+  # - "/my/personal/full/path/my_file.mp3"
+
+# ---------------------------
+# On ready notification
+# ---------------------------
+# This section is used to notify the user when Kalliope is waiting for a trigger detection by playing a sound or speak a sentence out loud
+
+# This parameter define if you play the on ready answer:
+# - always: every time Kalliope is ready to be awaken
+# - never: never play a sound or sentences when kalliope is ready
+# - once: at the first start of Kalliope
+play_on_ready_notification: "never"
+
+# The on ready notification can be a sentence. Place here a sentence or a list of sentence. If you set a list, one sentence will be picked up randomly
+on_ready_answers:
+  - "in attesa di ordini"
+
+# You can play a sound instead of a sentence.
+# Remove the `on_ready_answers` parameters by commenting it out and use this one instead.
+# Place here the path of the sound file. Files must be .wav or .mp3 format.
+# on_ready_sounds:
+  # - "sounds/ding.wav"
+  # - "sounds/dong.wav"
+
+# ---------------------------
+# Rest API
+# ---------------------------
+rest_api:
+  active: True
+  port: 5000
+  password_protected: True
+  login: admin
+  password: secret
+
+# ---------------------------
+# Default Synapse
+# ---------------------------
+# Specify an optional default synapse response in case your order is not found.
+default_synapse: "default-synapse"
+
+# ---------------------------
+# resource directory path
+# ---------------------------
+resource_directory:
+  neuron: "resources/neurons"
+  stt: "resources/stt"
+  tts: "resources/tts"
+
+# ---------------------------
+# Global files variables
+# /!\ If a variable is defined in different files, the last file defines the value.
+# ---------------------------
+var_files:
+  - global_variables/variables.yml
+#  - variables2.yml
+
+# ---------------------------
+# Raspberry Pi GPIO settings
+# ---------------------------
+#rpi:
+#  pin_mute_button: 24
+#  pin_led_started: 23
+#  pin_led_muted: 17
+#  pin_led_talking: 27
+#  pin_led_listening: 22

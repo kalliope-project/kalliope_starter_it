@@ -1,0 +1,60 @@
+{% set day_of_week = {
+    "0": "domenica",
+    "1": "lunedì",
+    "2": "martedì",
+    "3": "mercoledì",
+    "4": "giovedì",
+    "5": "venerdì",
+    "6": "sabato"
+}[weekday] | default("")-%}
+
+{% set month_word = {
+    "01": "gennaio",
+    "02": "febbraio",
+    "03": "marzo",
+    "04": "aprile", 
+    "05": "maggio", 
+    "06": "giugno", 
+    "07": "luglio", 
+    "08": "agosto",
+    "09": "settembre",
+    "10": "october", 
+    "11": "novembre", 
+    "12": "dicembre"
+}[month] | default("") -%}
+
+{% set day_month_formated = {
+    "01": "uno",
+    "02": "due",
+    "03": "tre",
+    "04": "quattro",
+    "05": "cinque",
+    "06": "sei",
+    "07": "sette",
+    "08": "otto",
+    "09": "nove",
+    "10": "dieci",
+    "11": "undici",
+    "12": "dodici",
+    "13": "tredici",
+    "14": "quattordici",
+    "15": "quindici",
+    "16": "sedici",
+    "17": "diciassette",
+    "18": "diciotto",
+    "19": "diciannove",
+    "20": "venti",
+    "21": "ventuno",
+    "22": "ventidue",
+    "23": "ventitré",
+    "24": "ventiquattro",
+    "25": "venticionque",
+    "26": "ventisei",
+    "27": "ventisette",
+    "28": "ventotto",
+    "29": "ventinove",
+    "30": "trenta",
+    "31": "trentuno"
+}[day_month] | default("") -%}
+
+Oggi è {{ day_of_week }}, {{ day_month_formated }} {{ month_word }}, {{ year }}
