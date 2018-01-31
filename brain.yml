@@ -27,9 +27,8 @@
         - brains/systemdate.yml
         - brains/neurotransmitter.yml
 
-  - name: "default-synapse"
-    signals:
-      - order: "default-synapse"
+  - name: "order-not-found-synapse"
+    signals: []
     neurons:
       - say:
           message:
@@ -37,4 +36,19 @@
             - "Non conosco quest'ordine"
             - "Non conosco quell'ordine"
 
+  - name: "on-triggered-synapse"
+    signals: []
+    neurons:
+      - say:
+          message:
+            - "Si?"
+            - "Sto ascoltando"
+            - "La sto ascoltando"
+            - "Cosa posso fare per lei?"
+            - "Come posso aiutarla?"
 
+  - name: "on-start-synapse"
+    signals: []
+    neurons:
+      - say:
+          message: "In attesa di ordini"

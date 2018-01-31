@@ -27,5 +27,4 @@
       - order: "Ciao"
     neurons:
       - say:
-          message:
-            - "Ciao {{name}}"
+          message: "Ciao {{name}}"
