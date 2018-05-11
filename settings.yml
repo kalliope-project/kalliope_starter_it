@@ -26,11 +26,6 @@ triggers:
 # This is the STT that will be used by default
 default_speech_to_text: "google"
 
-# Speech to text options
-#recognition_options:
-#  energy_threshold: 4000
-#  adjust_for_ambient_noise_second: 1
-
 # Speech to Text engines configuration
 # Available engine are:
 # - google (via SpeechRecognition)
@@ -108,8 +103,9 @@ hooks:
   on_stop_listening:
   on_order_found:
   on_order_not_found: "order-not-found-synapse"
-  on_mute:
-  on_unmute:
+  on_processed_synapses:
+  on_deaf:
+  on_undeaf:
   on_start_speaking:
   on_stop_speaking:
 
@@ -123,12 +119,6 @@ rest_api:
   login: admin
   password: secret
   allowed_cors_origin: "*"
-
-# ---------------------------
-# Default Synapse
-# ---------------------------
-# Specify an optional default synapse response in case your order is not found.
-default_synapse: "default-synapse"
 
 # ---------------------------
 # resource directory path
@@ -150,7 +140,12 @@ var_files:
 #  - variables2.yml
 
 # -------------
-# Start options
+# Options
 # -------------
-#start_options:
-#  muted: False
+options:
+#  energy_threshold: 4000                 # Speech to text option
+#  adjust_for_ambient_noise_second: 1     # Speech to text option
+#  stt_timeout: 5                          # Speech to text option
+  deaf: False
+  mute: False
+
