@@ -4,7 +4,7 @@ You need to have the
 [Kalliope Core](https://github.com/kalliope-project/kalliope)
 installed before cloning this starter kit.
 
-This starter kit has been tested with Kalliope v0.5.0.
+This starter kit has been tested with Kalliope v0.5.1.
 
 # Kalliope starter config it
 
@@ -24,8 +24,8 @@ https://snowboy.kitt.ai/hotword/10650
 
 # Copyright and license
 
-Copyright (c) 2016-2017, Kalliope team
+Copyright (c) 2016-2018, Kalliope team
 
-Copyright (c) 2017, Franco Masotti
+Copyright (c) 2017-2018, Franco Masotti
                    
 MIT license
